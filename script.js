@@ -17,6 +17,7 @@ let endPoint = new THREE.Vector3();
 // Selectors for color input elements
 const lineColorInput = document.getElementById('lineColor');
 const boxColorInput = document.getElementById('boxColor');
+const bgColorInput = document.getElementById('bgColor');
 
 // Function to create a line with dynamic color
 function createLine(start, end) {
@@ -47,6 +48,12 @@ function updateBoxPosition(start, end) {
     const midpoint = new THREE.Vector3().addVectors(start, end).multiplyScalar(0.5);
     box.position.copy(midpoint);
     box.material.color.set(boxColorInput.value); // Update color in real-time
+}
+
+// Function to update the background color
+function updateBackgroundColor() {
+    const color = bgColorInput.value;
+    renderer.setClearColor(color, 1); // Update the renderer's clear color
 }
 
 // Mouse events
@@ -82,7 +89,8 @@ function getMousePosition(event) {
     return camera.position.clone().add(dir.multiplyScalar(distance));
 }
 
-// Event listeners
+// Event listeners for color changes
+bgColorInput.addEventListener('input', updateBackgroundColor);
 window.addEventListener('mousedown', onMouseDown);
 window.addEventListener('mousemove', onMouseMove);
 window.addEventListener('mouseup', onMouseUp);
