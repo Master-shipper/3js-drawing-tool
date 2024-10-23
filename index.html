@@ -3,21 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Three.js Line Drawing Tool</title>
     <style>
-        body { margin: 0;
-            overflow: hidden; }
-    </style>
-    <script type="importmap">
-        {
-          "imports": {
-            "three": "https://cdn.jsdelivr.net/npm/three@<0.169.0>/build/three.module.js",
-            "three/addons/": "https://cdn.jsdelivr.net/npm/three@<0.169.0>/examples/jsm/"
-          }
+        body { margin: 0; overflow: hidden; }
+        #controls {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 5px;
         }
-      </script>
+        label { margin-right: 5px; }
+    </style>
 </head>
 <body>
+    <div id="controls">
+        <label for="lineColor">Line Color:</label>
+        <input type="color" id="lineColor" value="#0000ff">
+        
+        <label for="boxColor">Box Color:</label>
+        <input type="color" id="boxColor" value="#ff0000">
+    </div>
     <script type="module" src="script.js"></script>
 </body>
 </html>
